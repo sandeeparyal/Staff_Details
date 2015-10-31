@@ -1,3 +1,8 @@
 {% for section in section_name %}
-    <a href='/kapra/{{hsection}}/{{ section }}/' > {{ section }} </br> 
+
+<a href='{% url 'employee_listings' hsection section %} ' > {{ section }} </br>
+
 {% endfor %}
+
+
+<!--    <a href='/kapra/{{hsection}}/{{ section }}/' > {{ section }} </br> -->
