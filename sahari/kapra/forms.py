@@ -5,6 +5,9 @@ from kapra.models import LettersTemplate
 class LetterForm(forms.ModelForm):
     class Meta:
         model = LettersTemplate
+        fields = ['letter_type', 'letter_date', 'letter_title', 'letter_body']
+
+
 
 
 '''class LetterForm(forms.Form):

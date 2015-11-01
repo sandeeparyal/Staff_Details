@@ -50,11 +50,13 @@ class Employee(models.Model):
 
 
 class LettersTemplate(models.Model):
+    TITLE_CHOICES = (
+                     ('Appointment', 'Niyukti'), ('Transfer', 'Saruwa'))
     employee = models.ForeignKey(Employee)
     letter_number = models.IntegerField(default=0)
     letter_type = models.IntegerField(default=0)
     letter_date = models.DateTimeField('date published')
-    letter_title = models.CharField(max_length=200)
+    letter_title = models.CharField(max_length=200, choices=TITLE_CHOICES)
     letter_body = models.CharField(max_length=5000)
     
     def __unicode__(self):

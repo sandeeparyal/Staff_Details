@@ -40,8 +40,10 @@ def letters(request, employee_id):
     if request.method == 'POST':
         form = LetterForm(request.POST)
         if form.is_valid():
+            letter_title = str(form.data['letter_title'])
+            context = {'letter_title':letter_title}
             letter_contents = form.save()     
-            return render(request, 'kapra/thanks.html')
+            return render(request, 'kapra/thanks.html', context)
         else:
             return render(request, 'kapra/letters.html')
     else:
