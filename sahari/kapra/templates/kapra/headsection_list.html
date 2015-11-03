@@ -1,4 +1,4 @@
 {% for hsection in head_section_name %}
-    <a href='/kapra/{{ hsection }}'>{{ hsection }} </br> 
+    <a href='{% url 'karmachari:section_listings' hsection %}'>{{ hsection }} </br> 
 {% endfor %}
 

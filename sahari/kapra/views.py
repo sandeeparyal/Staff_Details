@@ -15,7 +15,7 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         return Ministry.objects.all()
 
-def headsection_listings(request, word):
+def headsection_listings(request, word): #here word has in it the id from the ministry name
     head_section_list = HeadSection.objects.all()
     head_section_name = [p.head_section_name for p in head_section_list if p.ministry.id == int(word)]
     no_of_employees = [str(p.no_of_employees) for p in head_section_list if p.ministry.id == int(word)]
@@ -24,21 +24,18 @@ def headsection_listings(request, word):
 
 def section_listings(request, hsection):
     section_list = Section.objects.all()
-#    import pdb; pdb.set_trace()
     section_name = [p.section_name for p in section_list if p.headsection.head_section_name == hsection]
     context = {'section_name':section_name, 'hsection':hsection}
     return render(request, 'kapra/section_list.html', context)
 
 def employee_listings(request, hsection, section):
-    #import pdb; pdb.set_trace()
     employee_list = Employee.objects.all()
     employee_id = [p.emp_id for p in employee_list if p.section.section_name == section]
     employee_name = [p.emp_first_name +' ' +  p.emp_last_name for p in employee_list if p.section.section_name == section]
-    #    import pdb; pdb.set_trace()
     context = {'employee_name':employee_name, 'section':section, 'employee_id':employee_id}
     return render(request, 'kapra/employee_list.html', context)
 
-def letters(request, employee_id):
+def letters(request):
     #import pdb; pdb.set_trace()
     if request.method == 'POST':
         form = LetterForm(request.POST)
