@@ -1,16 +1,19 @@
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from kapra.models import Ministry, HeadSection, Section, Employee, LettersTemplate
+from django.views import generic
+
 from kapra.forms import LetterForm
 
 
 # Create your views here.
 
-def index(request):
-    output = Ministry.objects.all()
-    
-    context = {'output':output}
-    return render(request, 'kapra/index.html', context)
+class IndexView(generic.ListView):
+    template_name = 'kapra/index.html'
+    context_object_name = 'output'
+
+    def get_queryset(self):
+        return Ministry.objects.all()
 
 def headsection_listings(request, word):
     head_section_list = HeadSection.objects.all()
