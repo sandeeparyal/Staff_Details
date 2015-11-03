@@ -4,7 +4,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    #url(r'^$', 'templates/base_site.html', name='index'),
+#    url(r'^$', 'templates/admin/base_site.html', name='index'),
     url('^kapra/', include('kapra.urls', namespace='kapra')),
     # Examples:
    # url(r'', include('views')),

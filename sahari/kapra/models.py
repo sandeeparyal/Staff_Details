@@ -5,7 +5,7 @@ from django.utils import timezone
 
 class Ministry(models.Model):
     ministry_name = models.CharField(max_length=200)
-    ministry_location = models.CharField(max_length=200)
+    ministry_location = models.CharField(max_length=200, blank=True)
 
     def __unicode__(self):
         return self.ministry_name
@@ -30,17 +30,19 @@ class Section(models.Model):
 
 
 class Employee(models.Model):
+    EMPLOYEE_TYPE_CHOICES = (
+                             ('perm', 'Permanent'), ('temp', 'Temporary'))
     section = models.ForeignKey(Section)
-    emp_id = models.CharField(max_length=10)
+    emp_id = models.CharField(max_length=10, unique=True)
     emp_first_name = models.CharField(max_length=50)
-    emp_middle_name = models.CharField(max_length=50)
+    emp_middle_name = models.CharField(max_length=50, blank=True)
     emp_last_name = models.CharField(max_length=50)
     designation = models.CharField(max_length=50)
-    emp_joined_date = models.DateTimeField('Employee Joined Date')
-    emp_depart_date = models.DateTimeField('Employee Departed Date')
-    emp_status = models.CharField(max_length=50)
-    emp_phone = models.CharField(max_length=12)
-    emp_type = models.CharField(max_length=4)
+    emp_joined_date = models.DateField('Employee Joined Date')
+    emp_depart_date = models.DateField('Employee Departed Date', blank=True)
+    emp_status = models.CharField(max_length=50, blank=True)
+    emp_phone = models.CharField(max_length=12, blank=True)
+    emp_type = models.CharField(max_length=4, choices=EMPLOYEE_TYPE_CHOICES)
     
     def __unicode__(self):
         return self.designation
@@ -51,11 +53,13 @@ class Employee(models.Model):
 
 class LettersTemplate(models.Model):
     TITLE_CHOICES = (
-                     ('Appointment', 'Niyukti'), ('Transfer', 'Saruwa'))
+                     ('appointment', 'Niyukti'), ('transfer', 'Saruwa'))
+    LETTER_TYPES_CHOICES = (
+                            ('ni', 'Niyukti'), ('padas', 'Padasthapan'), ('trans', 'Transfer'))
     employee = models.ForeignKey(Employee)
     letter_number = models.IntegerField(default=0)
-    letter_type = models.IntegerField(default=0)
-    letter_date = models.DateTimeField('date published')
+    letter_type = models.IntegerField(default=0, choices=LETTER_TYPES_CHOICES)
+    letter_date = models.DateField('date published')
     letter_title = models.CharField(max_length=200, choices=TITLE_CHOICES)
     letter_body = models.CharField(max_length=5000)
     
