@@ -1,5 +1,5 @@
 {% for word in  output  %}
-<p><a href='/kapra/{{ word.id }}/' > {{word}} </a>
+<p><a href='{%url 'karmachari:headsection_listings' word.id %}' > {{word}} </a>
 {% endfor %}
 
 

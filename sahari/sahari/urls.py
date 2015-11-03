@@ -4,6 +4,6 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url('^kapra/', include('kapra.urls', namespace='kapra')),
+    url('^kapra/', include('kapra.urls', namespace='karmachari')),
     url(r'^admin/', include(admin.site.urls)),
 )
