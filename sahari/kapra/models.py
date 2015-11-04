@@ -58,7 +58,7 @@ class LettersTemplate(models.Model):
                             ('ni', 'Niyukti'), ('padas', 'Padasthapan'), ('trans', 'Transfer'))
     employee = models.ForeignKey(Employee)
     letter_number = models.IntegerField(default=0)
-    letter_type = models.IntegerField(default=0, choices=LETTER_TYPES_CHOICES)
+    letter_type = models.CharField(max_length=200, choices=LETTER_TYPES_CHOICES)
     letter_date = models.DateField('date published')
     letter_title = models.CharField(max_length=200, choices=TITLE_CHOICES)
     letter_body = models.CharField(max_length=5000)
