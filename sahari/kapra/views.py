@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from kapra.models import Ministry, HeadSection, Section, Employee, LettersTemplate
@@ -37,11 +39,16 @@ def employee_listings(request, hsection, section):
 
 def letters(request):
     #import pdb; pdb.set_trace()
+    request.encoding = 'utf-8'
     if request.method == 'POST':
+        import pdb; pdb.set_trace()
         form = LetterForm(request.POST)
         if form.is_valid():
-            letter_title = str(form.data['letter_title'])
-            context = {'letter_title':letter_title}
+#            for value in form.fields.values():
+#                value.encode('utf-8')
+#            letter_title = form.data['letter_title']
+#            context = {'letter_title':letter_title}
+            generate_letter(form)
             letter_contents = form.save()     
             return render(request, 'kapra/thanks.html', context)
         else:
@@ -49,11 +56,14 @@ def letters(request):
     else:
         form = LetterForm()
         return render(request, 'kapra/contact.html', {'form' : form, })
-'''letter_number = models.IntegerField(default=0)
-    letter_type = models.IntegerField(default=0)
-    letter_date = models.DateTimeField('date published')
-    letter_title = models.CharField(max_length=200)
-    letter_body = models.CharField(max_length=5000)
-'''
 
+def generate_letter(form):
+    f = open("file1.txt","w")
+    f.write(form.data['letter_number'])
+    f.write('\n'+form.data['letter_date'])
+    f.write('\n'+form.data['letter_title'])
+    f.write('\n'+form.data['letter_body'])
+    f.write('\n'+form.data['letter_date'])
+    f.close()
+    pass
 
