@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.views import generic
@@ -40,6 +42,7 @@ def letters(request):
         form = LetterForm(request.POST)
         if form.is_valid():
             letter_contents = form.save()
+            generate_letter(form)
             form.save()     
             return render(request, 'kapra/thanks.html')
         else:
