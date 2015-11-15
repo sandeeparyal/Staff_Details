@@ -1,10 +1,8 @@
-# -*- coding: utf-8 -*-
-
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
-from kapra.models import Ministry, HeadSection, Section, Employee, LettersTemplate
 from django.views import generic
 
+from kapra.models import Ministry, HeadSection, Section, Employee, LettersTemplate
 from kapra.forms import LetterForm
 
 
@@ -38,19 +36,12 @@ def employee_listings(request, hsection, section):
     return render(request, 'kapra/employee_list.html', context)
 
 def letters(request):
-    #import pdb; pdb.set_trace()
-    request.encoding = 'utf-8'
     if request.method == 'POST':
-        import pdb; pdb.set_trace()
         form = LetterForm(request.POST)
         if form.is_valid():
-#            for value in form.fields.values():
-#                value.encode('utf-8')
-#            letter_title = form.data['letter_title']
-#            context = {'letter_title':letter_title}
-            generate_letter(form)
-            letter_contents = form.save()     
-            return render(request, 'kapra/thanks.html', context)
+            letter_contents = form.save()
+            form.save()     
+            return render(request, 'kapra/thanks.html')
         else:
             return render(request, 'kapra/letters.html')
     else:
@@ -58,12 +49,12 @@ def letters(request):
         return render(request, 'kapra/contact.html', {'form' : form, })
 
 def generate_letter(form):
-    f = open("file1.txt","w")
-    f.write(form.data['letter_number'])
-    f.write('\n'+form.data['letter_date'])
-    f.write('\n'+form.data['letter_title'])
-    f.write('\n'+form.data['letter_body'])
-    f.write('\n'+form.data['letter_date'])
+    f = (open("file1.txt","w"))
+    f.write(form.data['letter_number'].encode('utf-8'))
+    f.write('\n'+form.data['letter_date'].encode('utf-8'))
+    f.write('\n'+form.data['letter_title'].encode('utf-8'))
+    f.write('\n'+form.data['letter_body'].encode('utf-8'))
+    f.write('\n'+form.data['letter_date'].encode('utf-8'))
     f.close()
     pass
 
