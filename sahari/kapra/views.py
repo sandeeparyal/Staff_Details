@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
@@ -52,12 +53,13 @@ def letters(request):
         return render(request, 'kapra/contact.html', {'form' : form, })
 
 def generate_letter(form):
-    f = (open("file1.txt","w"))
-    f.write(form.data['letter_number'].encode('utf-8'))
-    f.write('\n'+form.data['letter_date'].encode('utf-8'))
-    f.write('\n'+form.data['letter_title'].encode('utf-8'))
-    f.write('\n'+form.data['letter_body'].encode('utf-8'))
-    f.write('\n'+form.data['letter_date'].encode('utf-8'))
-    f.close()
-    pass
+    file_name = (form.data['letter_title'][:5]).encode('utf-8') + form.data['letter_number'].encode('utf-8') + ".docx"
+    with open(os.path.join(os.getcwd(), file_name), mode="a") as f:
+        f.write(form.data['letter_number'].encode('utf-8'))
+        f.write('\n'+form.data['letter_date'].encode('utf-8'))
+        f.write('\n'+form.data['letter_title'].encode('utf-8'))
+        f.write('\n'+form.data['letter_body'].encode('utf-8'))
+        f.write('\n'+form.data['letter_date'].encode('utf-8'))
+        f.write('\n'+os.path.join(os.getcwd(), file_name))
+        pass
 
