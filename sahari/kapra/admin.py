@@ -18,10 +18,9 @@ admin.site.register(Ministry, MinistryAdmin)
 
 
 class EmployeeAdmin(admin.ModelAdmin):
-    fieldsets = [('Section', {'fields':['section']}),
-                 ('Employee Name', {'fields': ['emp_id', 'emp_first_name', 'emp_middle_name', 'emp_last_name'], 'classes':['collapse']}), 
-                 ('Employee Position', {'fields': ['designation', 'emp_joined_date', 'emp_depart_date', 'emp_status', 
-                        'emp_phone', 'emp_type']})]
+    fieldsets = [('Employee Identity', {'fields': ['emp_id', 'emp_gender', 'emp_first_name', 'emp_middle_name', 'emp_last_name']}), 
+                 ('Employee Position', {'fields': ['emp_sewa', 'emp_samuha', 'emp_upasamuha', 'emp_class', 'designation', 'emp_joined_date', 'emp_depart_date', 'emp_status','emp_phone', 'emp_type']}),
+                 ('Section', {'fields':['section']})]
 
                 
 #admin.site.register(HeadSection)
