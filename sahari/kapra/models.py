@@ -34,7 +34,7 @@ class Section(models.Model):
 class Employee(models.Model):
     EMPLOYEE_TYPE_CHOICES = (
                              ('perm', 'Permanent'), ('temp', 'Temporary'))
-	GENDER_CHOICES = (
+    GENDER_CHOICES = (
 						('M','Male'),('F','Female'))
     section = models.ForeignKey(Section)
     emp_id = models.CharField(max_length=10, unique=True)
@@ -42,9 +42,9 @@ class Employee(models.Model):
     emp_middle_name = models.CharField(max_length=100, blank=True)
     emp_last_name = models.CharField(max_length=100)
     emp_gender = models.CharField(max_length=4, choices=GENDER_CHOICES)
-	emp_sewa = models.CharField(max_length=100)
-	emp_samuha = models.CharField(max_length=100)
-	emp_upasamuha = models.CharField(max_length=100)
+    emp_sewa = models.CharField(max_length=100) 
+    emp_samuha = models.CharField(max_length=100)
+    emp_upasamuha = models.CharField(max_length=100)
     emp_level = models.CharField(max_length=50)
     designation = models.CharField(max_length=100)
     post = models.CharField(max_length=50)
@@ -61,17 +61,3 @@ class Employee(models.Model):
         return timezone.datetime.now()
 
 
-class LettersTemplate(models.Model):
-    TITLE_CHOICES = (
-                     ('appointment', 'Niyukti'), ('transfer', 'Saruwa'))
-    LETTER_TYPES_CHOICES = (
-                            ('ni', 'Niyukti'), ('padas', 'Padasthapan'), ('trans', 'Transfer'))
-    employee = models.ForeignKey(Employee)
-    letter_number = models.IntegerField(default=0)
-    letter_type = models.CharField(max_length=200, choices=LETTER_TYPES_CHOICES)
-    letter_date = models.DateField('date published')
-    letter_title = models.CharField(max_length=200, choices=TITLE_CHOICES)
-    letter_body = models.CharField(max_length=5000)
-    
-    def __unicode__(self):
-        return self.letter_title

@@ -5,8 +5,8 @@ from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.views import generic
 
-from kapra.models import Ministry, HeadSection, Section, Employee, LettersTemplate
-from kapra.forms import LetterForm
+from kapra.models import Ministry, HeadSection, Section, Employee
+
 
 
 # Create your views here.
@@ -38,28 +38,4 @@ def employee_listings(request, hsection, section):
     context = {'employee_name':employee_name, 'section':section, 'employee_id':employee_id}
     return render(request, 'kapra/employee_list.html', context)
 
-def letters(request):
-    if request.method == 'POST':
-        form = LetterForm(request.POST)
-        if form.is_valid():
-            letter_contents = form.save()
-            generate_letter(form)
-            form.save()     
-            return render(request, 'kapra/thanks.html')
-        else:
-            return render(request, 'kapra/letters.html')
-    else:
-        form = LetterForm()
-        return render(request, 'kapra/contact.html', {'form' : form, })
-
-def generate_letter(form):
-    file_name = (form.data['letter_title'][:5]).encode('utf-8') + form.data['letter_number'].encode('utf-8') + ".docx"
-    with open(os.path.join(os.getcwd(), file_name), mode="a") as f:
-        f.write(form.data['letter_number'].encode('utf-8'))
-        f.write('\n'+form.data['letter_date'].encode('utf-8'))
-        f.write('\n'+form.data['letter_title'].encode('utf-8'))
-        f.write('\n'+form.data['letter_body'].encode('utf-8'))
-        f.write('\n'+form.data['letter_date'].encode('utf-8'))
-        f.write('\n'+os.path.join(os.getcwd(), file_name))
-        pass
 

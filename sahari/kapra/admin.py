@@ -1,19 +1,13 @@
 from django.contrib import admin
 from django.utils import timezone
-from kapra.models import Ministry, HeadSection, Section, Employee, LettersTemplate; 
+from kapra.models import Ministry, HeadSection, Section, Employee 
 
 # Register your models here.
-
-#class SectionInline(admin.TabularInline):
-#    model = Section
-#    extra = 2
 
 class HeadSectionInline(admin.TabularInline):
     model = HeadSection
 #    inlines = [SectionInline]
     extra = 3
-
-
 
 class MinistryAdmin(admin.ModelAdmin):
     fields = ['ministry_name', 'ministry_location']
@@ -34,6 +28,4 @@ class EmployeeAdmin(admin.ModelAdmin):
 admin.site.register(Section)
 #admin.site.register(HeadSection, Section)
 admin.site.register(Employee, EmployeeAdmin)
-admin.site.register(LettersTemplate)
-
 
