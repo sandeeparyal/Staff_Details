@@ -1,7 +1,5 @@
-{% for section in section_name %}
-
-<a href='{% url 'karmachari:employee_listings' hsection section %}' > {{ section }} </br>
-
+{% for section in section_list %}
+<a href='{% url 'karmachari:employee_listings' section.id headsection_id %}' > {{ section }} </br>
 {% endfor %}
 
 
