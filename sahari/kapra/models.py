@@ -75,7 +75,9 @@ class Employee(models.Model):
     emp_joined_date = models.DateField('Employee Joined Date')
     emp_depart_date = models.DateField('Employee Departed Date', blank=True)
     emp_status = models.CharField(max_length=50, blank=True)
-    emp_phone = models.CharField(max_length=12, blank=True)
+    emp_phone1 = models.CharField(max_length=12, blank=True)
+    emp_phone2 = models.CharField(max_length=12, blank=True)
+    emp_address = models.CharField(max_length=12, blank=True)
     emp_type = models.CharField(max_length=4, choices=EMPLOYEE_TYPE_CHOICES)
     
     def __unicode__(self):

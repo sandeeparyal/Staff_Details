@@ -18,11 +18,15 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         return Ministry.objects.all()
 
-def headsection_listings(request, word): #here word has in it the id from the ministry name
-    head_section_list = HeadSection.objects.all()
-    head_section_name = [p.head_section_name for p in head_section_list if p.ministry.id == int(word)]
-    no_of_employees = [str(p.no_of_employees) for p in head_section_list if p.ministry.id == int(word)]
-    context = {'head_section_name':head_section_name, 'no_of_employees': no_of_employees}
+def headsection_listings(request, word_id): #here word has in it the id from the ministry name
+    head_section_list = HeadSection.objects.filter(id=int(word_id))
+#    head_section_list_filtered = HeadSection.objects.get(pk=int(word_id))
+    
+#    head_section_id = [p.id for p in head_section_list if p.ministry.id == int(word_id)]
+#    head_section_name = [p.head_section_name for p in head_section_list if p.ministry.id == int(word_id)]
+#    no_of_employees = [str(p.no_of_employees) for p in head_section_list if p.ministry.id == int(word_id)]
+#    context = {'head_section_id':head_section_id, 'head_section_name':head_section_name, 'no_of_employees': no_of_employees}
+    context = {'head_section_list':head_section_list}
     return render(request, 'kapra/headsection_list.html', context)
 
 def section_listings(request, hsection):
