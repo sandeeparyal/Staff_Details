@@ -30,9 +30,7 @@ def section_listings(request, ministry_id, head_section_id):
 
 def employee_listings(request, ministry_id, head_section_id, section_id):
     employee_list = Employee.objects.filter(section__id=int(section_id))
-    employee_id = [p.emp_id for p in employee_list]
-    employee_name = [p.emp_first_name +' ' +  p.emp_last_name for p in employee_list]
-    context = {'employee_name':employee_name, 'employee_id':employee_id}
+    context = {'employee_list':employee_list}
     return render(request, 'kapra/employee_list.html', context)
 
 
