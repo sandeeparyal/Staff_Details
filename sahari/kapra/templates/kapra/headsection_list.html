@@ -1,5 +1,5 @@
 {% for head_section in head_section_list %}
-    <a href='{% url 'karmachari:section_listings' head_section.id %}'>{{ head_section.head_section_name }}  </br> 
+    <a href='{% url 'karmachari:section_listings' ministry_id head_section.id %}'>{{ head_section.head_section_name }}  </br> 
 {% endfor %}
 
 
