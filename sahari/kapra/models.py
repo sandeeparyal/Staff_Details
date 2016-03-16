@@ -37,28 +37,32 @@ class Employee(models.Model):
     GENDER_CHOICES = (
 						('M','Male'),('F','Female'))
     EMPLOYEE_SEWA_CHOICES = (
-                            ('prasashan', 'Nepal Prasashan'),
-                            ('engineering', 'Nepal Engineering'),
-                            ('bibidh', 'Nepal Bibidh'),('sikshya', 'Nepal Sikshya'),
-                            ('anya', 'Anya')
-                            )
+                            ('1', 'नेपाल प्रशासन'),
+                            ('2', 'न्याय'),
+                            ('3', 'लेखा' ),
+                            ('4', 'नेपाल ईन्जिनियरिङ्ग' ),
+                            ('5', 'विविध' ),
+                            ('6', 'शिक्षा' ),
+                            ('7', 'अन्य'),
+        )
     EMPLOYEE_SAMUHA_CHOICES = (
-                            ('samanya_prasashan', 'Samanya Prasashan'),
-                            ('civil_engineering', 'Civil'),
-                            ('anya', 'Anya')
-                            ) 
+                            ('1', 'सामान्य प्रशासन'),
+                            ('2', 'कानून'),
+                            ('3','सिभिल'),
+                            ('4','अन्य'),
+             ) 
            
     EMPLOYEE_CLASS_CHOICES = (
-                            ('bisistha', 'Bisistha'),
-                            ('gazzetted_first_class', 'Gazzetted First'),
-                            ('gazzetted_second_class', 'Gazzetted Second'),
-                            ('gazzetted_third_class', 'Gazzetted Third'),
-                            ('non_gazzetted_first_class', 'Non Gazzetted First'),
-                            ('non_gazzetted_second_class', 'Non Gazzetted Second'),
-                            ('non_gazzetted_third_class', 'Non Gazzetted Third'),
-                            ('non_class', 'Shreni Bihin'),
-                            ('anya', 'Anya'),
-                            )
+                            ('1', 'विशिष्ट'),
+                            ('2', 'रा.प.प्रथम'),
+                            ('3', 'रा.प.द्वितिय'),
+                            ('4', 'रा.प.तृतिय'),
+                            ('5', 'रा.प.अनं.प्रथम'),
+                            ('6', 'रा.प.अनं.द्धितिय'),
+                            ('7', 'रा.प.अनं.तृतिय'),
+                            ('8', 'श्रेणी विहिन'),
+                            ('9', 'अन्य'),
+         )
 
     section = models.ForeignKey(Section)
     emp_id = models.CharField(max_length=10, unique=True)

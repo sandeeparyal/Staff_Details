@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.core.urlresolvers import reverse
 from django.views import generic
 
@@ -29,7 +29,7 @@ def section_listings(request, ministry_id, head_section_id):
     return render(request, 'kapra/section_list.html', context)
 
 def employee_listings(request, ministry_id, head_section_id, section_id):
-    employee_list = Employee.objects.filter(section__id=int(section_id))
+    employee_list = Employee.objects.filter(section__id=int(section_id)).order_by('emp_sewa')
     context = {'employee_list':employee_list}
     return render(request, 'kapra/employee_list.html', context)
 

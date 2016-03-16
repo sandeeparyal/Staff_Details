@@ -1,24 +1,44 @@
-<h1>सहरी विकास मन्त्रालय</h1>
-<br>
-<table border="1" style="width:70%" >
-<tr>
-            <td>महाशाखा </td>
-            <td>शाखा </td>
-            <td>कर्मचारी स‌केत न‌</td>
-            <td>नाम </td>
-            <td>पद </td>
-</tr>
-</table>
+<head>
+    <style>
+        table, td {
+            border:1px solid blue;
+            border-collapse:collapse;
+        }
 
-<table border="1" style="width:70%">
-{% for employee in employee_list %}
-<tr>
-            <td>{{employee.section.headsection.head_section_name}}</td>
-            <td>{{employee.section.section_name}}</td>
-            <td>{{employee.emp_id}}</td>
-            <td>{{employee.emp_first_name}} {{employee.emp_last_name}}</td>
-            <td>{{employee.designation}}</td>
-</tr>
-{% endfor %}
+        th, td {
+                padding: 5px;
+        }
+        table {
+            border-spacing:15px; 
+        }
 
-</table>
+    </style>
+</head>
+    <body>
+        <table align="center" style="width:80%" >
+            <tr>
+                <td style="background-color:lightblue; color:red; font-size:25" align="center" colspan="7">सहरी विकास मन्त्रालयका कर्मचारीहरु</td>
+            </tr> 
+            <tr style="background-color:lightgrey; color:blue; font-size:20">
+                        <td> सि‍.न‌. </td>
+                        <td>नाम </td>
+                        <td>कर्मचारी स‌के‌‌त न‌</td>
+                        <td>पद </td>
+                        <td>सेवा</td>
+                        <td>महाशाखा </td>
+                        <td>शाखा </td>
+            </tr>
+            {% for employee in employee_list %}
+                <tr>
+                            <td>{{ loop.index }}</td>                            
+                            <td>{{employee.emp_first_name}} {{employee.emp_last_name}}</td>
+                            <td>{{employee.emp_id}}</td>
+                            <td>{{employee.designation}}</td>
+                            <td>{{employee.get_emp_sewa_display}}</td>
+                            <td >{{employee.section.headsection.head_section_name}}</td>
+                            <td>{{employee.section.section_name}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
