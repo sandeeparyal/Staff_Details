@@ -1,6 +1,26 @@
-{% for section in section_list %}
-<a href='{% url 'karmachari:employee_listings' ministry_id head_section_id section.id %}' > {{ section }} </br>
-{% endfor %}
+<!DOCTYPE html>
+<html lang="en">
+<style type="text/css">
+p {
+   font-size: 16px;
+}
+</style>
+<head>
+  <title>सहरी विकास मन्त्रालय</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+    <body>
+        <div class="container">
+            {% for section in section_list %}
+            <a href='{% url 'karmachari:employee_listings' ministry_id head_section_id section.id %}' > {{ section }} </br>
+            {% endfor %}
+        </div>
+    </body>
+</html>
 
 
 
