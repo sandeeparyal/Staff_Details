@@ -33,4 +33,13 @@ def employee_listings(request, ministry_id, head_section_id, section_id):
     context = {'employee_list':employee_list}
     return render(request, 'kapra/employee_list.html', context)
 
+def search_by_id(request):
+    try:    
+        employee = Employee.objects.get(emp_id=request.POST['search_id']);
+        context = {"employee": employee}
+    except:
+        employee = "No employee found"
+        context = {"employee": employee}
+    return render(request, 'kapra/search_by_id_result.html', context)
+
 

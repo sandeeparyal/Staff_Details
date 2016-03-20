@@ -13,13 +13,24 @@ p {
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
-    <body>
-        <div class="container">
-            {% for section in section_list %}
-            <a href='{% url 'karmachari:employee_listings' ministry_id head_section_id section.id %}' > {{ section }} </br>
-            {% endfor %}
+<body>
+    <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" rel="home" href="/kapra/" >सहरी विकास मन्त्रालय</a>
         </div>
-    </body>
+    </div>
+    <div class="container">
+        {% for section in section_list %}
+        <a href='{% url 'karmachari:employee_listings' ministry_id head_section_id section.id %}' > {{ section }} </br>
+        {% endfor %}
+    </div>
+</body>
 </html>
 
 

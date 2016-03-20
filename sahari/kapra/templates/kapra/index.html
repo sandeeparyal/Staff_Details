@@ -12,11 +12,23 @@
 
 <body>
 
-<div class="container">
-   {% for ministry in  output  %}
-         <h1><a href='{%url 'karmachari:headsection_listings' ministry.id %}' > {{ministry.ministry_name}} </h1>
-    {% endfor %}
-</div>
+    <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" rel="home" href="/kapra/" >सहरी विकास मन्त्रालय</a>
+        </div>
+    </div>
+
+    <div class="container">
+       {% for ministry in  output  %}
+             <h1><a href='{%url 'karmachari:headsection_listings' ministry.id %}' > {{ministry.ministry_name}} </h1>
+        {% endfor %}
+    </div>
 </body>
 </html>
 

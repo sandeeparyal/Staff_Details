@@ -85,7 +85,7 @@ class Employee(models.Model):
     emp_type = models.CharField(max_length=4, choices=EMPLOYEE_TYPE_CHOICES)
     
     def __unicode__(self):
-        return self.designation
+        return (self.emp_id + " " + self.emp_first_name +' '+ self.emp_last_name)
 
     def employee_duration(self):
         return timezone.datetime.now()
