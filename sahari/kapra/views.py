@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
 import os
 
+import csv
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.core.urlresolvers import reverse
 from django.views import generic
 
+import pdfkit
 from kapra.models import Ministry, HeadSection, Section, Employee
 
 
@@ -35,11 +38,15 @@ def employee_listings(request, ministry_id, head_section_id, section_id):
 
 def search_by_id(request):
     try:    
-        employee = Employee.objects.get(emp_id=request.POST['search_id']);
+        employee = Employee.objects.get(emp_id=request.POST['search_id'])
         context = {"employee": employee}
     except:
         employee = "No employee found"
         context = {"employee": employee}
     return render(request, 'kapra/search_by_id_result.html', context)
 
+def generate_pdf(request, ministry_id, head_section_id, section_id):
+    response = HttpResponse(content_type='text/plain')
+    response['Content-Disposition'] = 'attachment; filename="employee.csv"'
+    return response
 

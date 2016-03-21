@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>सहरी विकास मन्त्रालय</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+   <body>
+        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" rel="home" href="/kapra/" >सहरी विकास मन्त्रालय</a>
+            </div>
+        </div>
+        <div class="container">
+             <table class="table table-striped">
+                <tr>
+                    <td colspan="7" align="center" class="bg-primary">सहरी विकास मन्त्रालयका कर्मचारीहरु</td>
+                </tr> 
+                <tr class="bg-info">
+                            <td>सि‍.न‌.</td>
+                            <td>नाम </td>
+                            <td>कर्मचारी स‌के‌‌त न‌</td>
+                            <td>पद </td>
+                            <td>सेवा</td>
+                            <td>महाशाखा </td>
+                            <td>शाखा </td>
+                </tr>
+                    <tr class="text-left">
+                                <td></td>                            
+                                <td>{{employee.emp_first_name}} {{employee.emp_last_name}}</td>
+                                <td>{{employee.emp_id}}</td>
+                                <td>{{employee.designation}}</td>
+                                <td>{{employee.get_emp_sewa_display}}</td>
+                                <td >{{employee.section.headsection.head_section_name}}</td>
+                                <td>{{employee.section.section_name}}</td>
+                    </tr>
+
+            </table>
+        </div>
+    </body>
+</html>
+

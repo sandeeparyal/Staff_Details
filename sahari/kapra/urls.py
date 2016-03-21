@@ -10,5 +10,6 @@ urlpatterns = patterns('',
     url(r's(?P<ministry_id>\d+)/(?P<head_section_id>\d+)/$', views.section_listings, name='section_listings'),
     url(r'e(?P<ministry_id>\d+)/(?P<head_section_id>\d+)/(?P<section_id>\d+)/$', views.employee_listings, name='employee_listings'),
     url(r'search_by_id/$', views.search_by_id, name='search_by_id'),
+    url(r'generate_pdf(?P<ministry_id>\d+)/(?P<head_section_id>\d+)/(?P<section_id>\d+)/$', views.generate_pdf, name='generate_pdf'),
     )
 
