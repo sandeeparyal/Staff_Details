@@ -47,6 +47,12 @@ def search_by_id(request):
 
 def generate_pdf(request, ministry_id, head_section_id, section_id):
     response = HttpResponse(content_type='text/plain')
-    response['Content-Disposition'] = 'attachment; filename="employee.csv"'
+    response['Content-Disposition'] = 'attachment; filename="employee.txt"'
+    writer = csv.writer(response)
+    employee_list = Employee.objects.filter(section__id=int(section_id)).order_by('emp_sewa')
+    writer.writerow(["नाम"+'\t' + "पद"])
+    for x in employee_list:
+        writer.writerow([str(x.emp_first_name.encode('utf-8'))+' ' + str(x.emp_last_name.encode('utf-8'))+'\t' + str(x.designation.encode('utf-8'))+'\t'])
     return response
+
 
