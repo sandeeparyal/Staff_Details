@@ -26,6 +26,7 @@ class EmployeeAdmin(admin.ModelAdmin):
                  ('Period',{'fields':status}),
                  ('Contact',{'fields':(phone,)}),
                  ('Section', {'fields':['section']})]
+    list_filter = ('designation',)
 
                 
 #admin.site.register(HeadSection)

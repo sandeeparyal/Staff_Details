@@ -1,28 +1,16 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>सहरी विकास मन्त्रालय</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="{% static 'kapra/css/bootstrap.min.css' %}" />
-</head>
+{% extends "kapra/base.html" %}
+{% block title %} गृहपृष्ठ {% endblock %}
+{% block head %}
+{{ block.super }}
+{% endblock %}
 
-<body>
-
-        <div class="navbar navbar-inverse">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/kapra/" >सहरी विकास मन्त्रालय</a>
-            </div>
-        </div>
-
+{% block content %}
+{{ block.super }}
     <div class="container">
        {% for ministry in  output  %}
              <h1><a href='{%url 'karmachari:headsection_listings' ministry.id %}' > {{ministry.ministry_name}} </h1>
         {% endfor %}
     </div>
-</body>
-</html>
-
+{% endblock %}
 
 

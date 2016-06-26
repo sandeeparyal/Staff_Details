@@ -33,9 +33,9 @@ class Section(models.Model):
 
 class Employee(models.Model):
     EMPLOYEE_TYPE_CHOICES = (
-                             ('perm', 'Permanent'), ('temp', 'Temporary'))
+                             ('perm', 'स्थायी'), ('temp', 'करार'))
     GENDER_CHOICES = (
-						('M','Male'),('F','Female'))
+						('M','पुरुष'),('F','महिला'))
     EMPLOYEE_SEWA_CHOICES = (
                             ('1', 'नेपाल प्रशासन'),
                             ('2', 'न्याय'),
@@ -63,7 +63,27 @@ class Employee(models.Model):
                             ('8', 'श्रेणी विहिन'),
                             ('9', 'अन्य'),
          )
-
+    DESIGNATION_CHOICES = (
+                            ('1', 'सचिव'),
+                            ('2', 'सहसचिव'),
+                            ('3','सु इ'),
+                            ('4', 'उपसचिव'),
+                            ('5', 'वरीष्ठ समाजशास्त्री'),
+                            ('6', 'सि डि इ'),
+                            ('7', 'शाखा अधिकृत'),                
+                            ('8','इन्जिनियर'),                
+                            ('9', 'नायव सुब्बा'),
+                            ('10', 'कम्प्युटर अपरेटर'),
+                            ('11', 'पुस्तकालय सहायक'),
+                            ('12', 'खरिदार'),
+                            ('13','हलुका सवारी चालक'),
+                            ('14','कार्यालय सहयाेगी'),
+                            ('15', 'अन्य'),
+         )
+    STATUS_CHOICES = (
+                            ('1', 'कार्यरत'),
+                            ('2', 'काज'),
+         )
     section = models.ForeignKey(Section)
     emp_id = models.CharField(max_length=10, unique=True)
     emp_first_name = models.CharField(max_length=100)
@@ -74,11 +94,11 @@ class Employee(models.Model):
     emp_samuha = models.CharField(max_length=100, choices=EMPLOYEE_SAMUHA_CHOICES, blank=True)
     emp_upasamuha = models.CharField(max_length=100, blank=True)
     emp_class = models.CharField(max_length=50, choices=EMPLOYEE_CLASS_CHOICES, blank=True)
-    designation = models.CharField(max_length=100) #Section-Officer, Nasu etc
+    designation = models.CharField(max_length=100, choices=DESIGNATION_CHOICES) #Section-Officer, Nasu etc
     post = models.CharField(max_length=50, blank=True) #Special
-    emp_joined_date = models.DateField('Employee Joined Date')
-    emp_depart_date = models.DateField('Employee Departed Date', blank=True)
-    emp_status = models.CharField(max_length=50, blank=True)
+    emp_joined_date = models.DateField('Employee Joined Date', default='2016-03-03')
+    emp_depart_date = models.DateField('Employee Departed Date', default='2016-03-03', blank=True)
+    emp_status = models.CharField(max_length=50, blank=True, choices=STATUS_CHOICES, default=1)
     emp_phone1 = models.CharField(max_length=12, blank=True)
     emp_phone2 = models.CharField(max_length=12, blank=True)
     emp_address = models.CharField(max_length=12, blank=True)

@@ -1,25 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>सहरी विकास मन्त्रालय</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-</head>
-   <body>
-        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" rel="home" href="/kapra/" >सहरी विकास मन्त्रालय</a>
-            </div>
-        </div>
+{% extends "kapra/base.html" %}
+{% block title %} खाेजी गरीएकाे कर्मचारी {% endblock %}
+{% block head %}
+{{ block.super }}
+{% endblock %}
+{% block content %}
+
         <div class="container">
              <table class="table table-striped">
                 <tr>
@@ -46,6 +31,5 @@
 
             </table>
         </div>
-    </body>
-</html>
+{% endblock %}
 

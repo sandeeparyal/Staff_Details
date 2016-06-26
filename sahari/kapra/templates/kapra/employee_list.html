@@ -1,20 +1,11 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>सहरी विकास मन्त्रालय</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="{% static 'kapra/css/bootstrap.min.css' %}" /> 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-</head>
-   <body>
-        <div class="navbar navbar-inverse">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/kapra/" >सहरी विकास मन्त्रालय</a>
-            </div>
-        </div>
+{% extends "kapra/base.html" %}
+{% block title %} कर्मचारीहरु {% endblock %}
+{% block head %}
+{{ block.super }}
+{% endblock %}
 
+{% block content %}
+{{ block.super }}
     <form class="form-inline" action="{% url 'karmachari:search_by_id'%}" method="post" role="form">
        {% csrf_token %}
         <div class="form-group">
@@ -42,12 +33,14 @@
                             <td>{{ loop.index }}</td>                            
                             <td>{{employee.emp_first_name}} {{employee.emp_last_name}}</td>
                             <td>{{employee.emp_id}}</td>
-                            <td>{{employee.designation}}</td>
+                            <td>{{employee.get_designation_display}}</td>
                             <td>{{employee.get_emp_sewa_display}}</td>
                             <td >{{employee.section.headsection.head_section_name}}</td>
                             <td>{{employee.section.section_name}}</td>
                 </tr>
             {% endfor %}
         </table>
-    </body>
-</html>
+{% endblock %}
+
+
+
