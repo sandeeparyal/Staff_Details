@@ -30,7 +30,7 @@
             </tr>
             {% for employee in employee_list %}
                 <tr class="text-left">
-                            <td>{{ loop.index }}</td>                            
+                            <td>{{ forloop.counter }}</td>                            
                             <td>{{employee.emp_first_name}} {{employee.emp_last_name}}</td>
                             <td>{{employee.emp_id}}</td>
                             <td>{{employee.get_designation_display}}</td>
