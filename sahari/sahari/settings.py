@@ -50,6 +50,8 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'sahari.urls'
+LOGIN_URL = '/kapra'
+LOGIN_REDIRECT_URL = '/kapra/home'
 
 WSGI_APPLICATION = 'sahari.wsgi.application'
 
