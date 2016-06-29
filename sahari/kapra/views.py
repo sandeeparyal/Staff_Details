@@ -2,6 +2,8 @@
 import os
 
 import csv
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.core.urlresolvers import reverse
@@ -13,12 +15,14 @@ from kapra.models import Ministry, HeadSection, Section, Employee
 
 # Create your views here.
 
+
 class IndexView(generic.ListView):
     template_name = 'kapra/index.html'
     context_object_name = 'output'
 
     def get_queryset(self):
         return Ministry.objects.all()
+
 
 def headsection_listings(request, ministry_id): #here word has in it the id from the ministry name
     head_section_list = HeadSection.objects.filter(ministry__id=int(ministry_id))
