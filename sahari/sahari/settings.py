@@ -50,8 +50,8 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'sahari.urls'
-LOGIN_URL = '/kapra'
-LOGIN_REDIRECT_URL = '/kapra/home'
+LOGIN_URL = 'django.contrib.auth.views.login'
+LOGIN_REDIRECT_URL = '/kapra'
 
 WSGI_APPLICATION = 'sahari.wsgi.application'
 
