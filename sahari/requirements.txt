@@ -1,0 +1,18 @@
+  669  sudo apt-get install python2.7-dev 
+ 1114  sudo apt-get install software-properties-common 
+ 1120  sudo apt-get update
+ 1121  sudo apt-get install mariadb-server
+ 1144  sudo apt-get install python-mysqldb
+ 1244  sudo apt-get install libmariadbclient-dev
+ 1248  sudo apt-get install python-mysqldb
+  612  pip install Django
+  651  pip install uwsgi
+  662  pip install python2.7-dev
+  664  pip install python2.7-dev
+  665  pip install python2.7.11-dev
+  668  pip install python-dev
+  673  pip install python-dev
+  674  pip install python2.7-dev
+ 1140  pip install MySQL-python
+ 1141  sudo pip install MySQL-python
+ 1247  pip install mysql-python
