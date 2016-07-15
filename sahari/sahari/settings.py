@@ -23,9 +23,9 @@ SECRET_KEY = 'ydjygu8mnh3xfmoh+9ocom_dx)bvm+#5o_$vl%37+q3y+6sey^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['10.1.62.34']
 
 
 # Application definition
@@ -61,8 +61,14 @@ WSGI_APPLICATION = 'sahari.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'database_kapra'),
+        'ENGINE': 'django.db.backends.mysql',
+#        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'sahari_bikash',
+	'USER': 'sandeep',
+	'PASSWORD': 'sahari',
+	'HOST':'sandeep',
+	'PORT':'',
+#        'NAME': os.path.join(BASE_DIR, 'database_kapra'),
     }
 }
 
@@ -84,4 +90,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
