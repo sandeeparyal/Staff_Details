@@ -1,0 +1,9 @@
+python-pip
+Django
+uwsgi
+python2.7-dev
+nginx
+software-properties-common
+mariadb-server
+libmysqlclient-dev
+python-mysqldb
