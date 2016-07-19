@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'ydjygu8mnh3xfmoh+9ocom_dx)bvm+#5o_$vl%37+q3y+6sey^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False 
+DEBUG = True 
 
 ALLOWED_HOSTS = ['*']
 
@@ -65,7 +65,7 @@ DATABASES = {
         'NAME': 'sahari_bikash',
 	'USER': 'sandeep',
 	'PASSWORD': 'sahari',
-	'HOST':'sandeep',
+	'HOST':'localhost',
 	'PORT':'',
 #        'NAME': os.path.join(BASE_DIR, 'database_kapra'),
     }
