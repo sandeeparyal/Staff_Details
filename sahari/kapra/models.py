@@ -110,9 +110,9 @@ class Employee(models.Model):
         return (self.emp_id + " " + self.emp_first_name +' '+ self.emp_last_name)
 
     def employee_duration(self):
-	if (not emp_depart_date):
-            return datetime.now() - emp_joined_date
+	if (not self.emp_depart_date):
+            return int(datetime.now() - self.emp_joined_date)
 	else:
-	    return emp_depart_date - emp_joined_date
+	    return int(self.emp_depart_date - self.emp_joined_date)
 
 

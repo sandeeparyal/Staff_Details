@@ -45,7 +45,8 @@ def section_listings(request, ministry_id, head_section_id):
 @login_required
 def employee_listings(request, ministry_id, head_section_id, section_id):
     employee_list = Employee.objects.filter(section__id=int(section_id)).order_by('emp_sewa', 'emp_class','designation')
-    context = {'employee_list':employee_list}
+    employee_duration = [x.employee_duration() for x in employee_list]
+    context = {'employee_list':employee_list, 'employee_duration':employee_duration}
     return render(request, 'kapra/employee_list.html', context)
 
 @login_required
