@@ -111,8 +111,9 @@ class Employee(models.Model):
 
     def employee_duration(self):
 	if (not self.emp_depart_date):
-            return int(datetime.now() - self.emp_joined_date)
+            date_difference = datetime.now() - self.emp_joined_date
 	else:
-	    return int(self.emp_depart_date - self.emp_joined_date)
+	    date_difference = self.emp_depart_date - self.emp_joined_date
+        return date_difference.days
 
 
