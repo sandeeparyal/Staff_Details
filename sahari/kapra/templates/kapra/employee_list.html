@@ -27,6 +27,7 @@
                         <td>सेवा</td>
                         <td>महाशाखा </td>
                         <td>शाखा </td>
+                        <td>कार्यरत अवधि</td>
             </tr>
             {% for employee in employee_list %}
                 <tr class="text-left">
@@ -37,6 +38,7 @@
                             <td>{{employee.get_emp_sewa_display}}</td>
                             <td >{{employee.section.headsection.head_section_name}}</td>
                             <td>{{employee.section.section_name}}</td>
+                            <td>{{employee_duration}}</td>
                 </tr>
             {% endfor %}
         </table>
