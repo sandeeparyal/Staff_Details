@@ -88,6 +88,7 @@ class Employee(models.Model):
          )
     section = models.ForeignKey(Section, verbose_name='शाखा')
     emp_id = models.CharField(max_length=10, unique=True, verbose_name='कर्मचारी स‌ङ्केत न‌')
+    emp_title = models.CharField(max_length=100, default='श्री', verbose_name='Title')
     emp_first_name = models.CharField(max_length=100, verbose_name='नाम')
     emp_middle_name = models.CharField(max_length=100, blank=True, verbose_name='बीचको नाम')
     emp_last_name = models.CharField(max_length=100, verbose_name='थर')
