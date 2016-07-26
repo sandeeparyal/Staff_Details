@@ -23,7 +23,7 @@ SECRET_KEY = 'ydjygu8mnh3xfmoh+9ocom_dx)bvm+#5o_$vl%37+q3y+6sey^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True 
 
-ALLOWED_HOSTS = ['*']
+#ALLOWED_HOSTS = ['*']
 
 TEMPLATE_DEBUG = False 
 
@@ -90,5 +90,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 #STATIC_ROOT = '/home/sandeep/project/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+STATIC_ROOT = os.path.join(BASE_DIR, "sahari/static/")
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]

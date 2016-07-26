@@ -13,13 +13,14 @@
                 <a href='{% url 'karmachari:employee_listings' ministry_id head_section_id section.id %}' > {{ section }} </a>
             </div>
 
-            <div class="col-md-2 col-md-offset-3">
+            <div class="col-md-2 col-md-offset-3" style="padding: 2px 0px;">
                  <form action="{% url 'karmachari:generate_pdf' ministry_id head_section_id section.id %}" method="post" >
                       {% csrf_token %}
-                     <button type="submit" class="btn btn-info btn-xs">Generate CSV</button>
+                     <button type="submit" class="btn btn-info btn-xs" style="">Generate CSV</button>
                  </form>
             </div>
         </div>
+
         {% endfor %}
     </div>
 {% endblock %}
