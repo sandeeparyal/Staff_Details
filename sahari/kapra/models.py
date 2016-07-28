@@ -115,6 +115,9 @@ class Employee(models.Model):
             date_difference = datetime.now() - self.emp_joined_date
 	else:
 	    date_difference = self.emp_depart_date - self.emp_joined_date
-        return date_difference.days
+	if date_difference.days < 0:
+	    return "Invalid"            
+	else:
+	    return date_difference.days
 
 
